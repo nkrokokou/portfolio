@@ -129,4 +129,11 @@ export const projects = [
     tags: ["Full-Stack", "FastAPI", "React", "TypeScript", "Open Source"],
     image: "/images/ziris.png",
   },
+  {
+    title: "Gestion de Conformité",
+    description: "Application mobile de gestion de conformité réglementaire et normative. Suivi des normes ISO 14001:2015, RGPD, gestion des utilisateurs, plans d'action avec traçabilité, et évaluation de conformité. Interface moderne et intuitive.",
+    link: "https://lemonchiffon-magpie-493788.hostingersite.com/",
+    tags: ["Mobile App", "Compliance", "ISO", "RGPD", "Management"],
+    image: "/images/compliance-app.png",
+  },
 ];
