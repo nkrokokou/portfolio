@@ -122,4 +122,11 @@ export const projects = [
     tags: ["Healthcare", "SaaS", "Web App", "Social Impact"],
     image: "/images/malodoc.png",
   },
+  {
+    title: "Ziris",
+    description: "Projet full-stack combinant un backend FastAPI (Python) et un frontend React TypeScript. Architecture moderne avec documentation complète. Disponible sur GitHub pour installation et déploiement local.",
+    link: "https://github.com/nkrokokou/ziris",
+    tags: ["Full-Stack", "FastAPI", "React", "TypeScript", "Open Source"],
+    image: "/images/ziris.png",
+  },
 ];
