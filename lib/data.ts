@@ -115,4 +115,11 @@ export const projects = [
     tags: ["Marketplace", "Services", "WhatsApp", "Community"],
     image: "/images/lome-services.png",
   },
+  {
+    title: "Malodoc V2",
+    description: "Plateforme de santé moderne connectant patients et médecins vérifiés. Réservation de consultations en ligne, créneaux solidaires gratuits, carte des pharmacies en temps réel, et système de dons pour financer les soins. Interface futuriste avec planification intelligente.",
+    link: "https://malodoc-v2.vercel.app/",
+    tags: ["Healthcare", "SaaS", "Web App", "Social Impact"],
+    image: "/images/malodoc.png",
+  },
 ];
