@@ -1,27 +1,39 @@
 "use client";
-import { projects } from "@/lib/data";
+import { data } from "@/lib/data";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
 
 export function Projects() {
+    const { language, t } = useLanguage();
+    const { projects } = data[language];
+
     return (
         <section id="projects" className="py-24 px-6 bg-secondary/10">
             <div className="max-w-6xl mx-auto">
-                <div
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
                     className="mb-16 text-center"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-                    <p className="text-muted-foreground">Some of the projects I've worked on.</p>
-                </div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('projects.title')}</h2>
+                    <p className="text-muted-foreground">{t('projects.subtitle')}</p>
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
-                        <a
+                        <motion.a
                             key={index}
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group block bg-card border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 transition-all hover:shadow-lg hover:-translate-y-1"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                            className="group block bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 transition-all hover:shadow-lg hover:-translate-y-1"
                         >
                             <div className="aspect-video w-full bg-muted relative overflow-hidden">
                                 <img
@@ -31,7 +43,7 @@ export function Projects() {
                                 />
                                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                     <span className="text-white font-medium border border-white/30 px-4 py-2 rounded-full backdrop-blur-sm">
-                                        Voir le projet
+                                        {t('projects.view')}
                                     </span>
                                 </div>
                                 <div className="absolute top-2 right-2 p-2 bg-background/80 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
@@ -54,7 +66,7 @@ export function Projects() {
                                     ))}
                                 </div>
                             </div>
-                        </a>
+                        </motion.a>
                     ))}
                 </div>
             </div>

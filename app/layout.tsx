@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/lib/language-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Djidepo Kokou Norbert NKRO | Portfolio",
-  description: "Informaticien & Spécialiste Big Data / IA based in Lome, Togo.",
+  title: "Space Informatik | Solutions Digitales Innovantes",
+  description: "Space Informatik - Entreprise technologique spécialisée dans le développement de solutions digitales sur mesure, Big Data et IA. Basée à Lomé, Togo.",
 };
 
 export default function RootLayout({
@@ -24,7 +25,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
