@@ -1,6 +1,6 @@
 import { Experience } from "@/components/Experience";
 import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
+import { FloatingHero } from "@/components/FloatingHero";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -31,7 +31,7 @@ export default function Home() {
           <ThemeToggle />
         </div>
 
-        <Hero />
+        <FloatingHero />
         <About />
         <div className="py-20 flex flex-col items-center justify-center overflow-hidden rounded-md">
           <h2 className="text-3xl font-bold text-center mb-8 z-10">Ils nous font confiance</h2>

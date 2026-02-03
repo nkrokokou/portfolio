@@ -71,7 +71,8 @@ export function ChatBot() {
         return "fr"; // Default back to French
     };
 
-    const handleSend = async () => {
+    const handleSend = async (e?: React.FormEvent) => {
+        e?.preventDefault();
         if (!input.trim()) return;
 
         const userMessage = input;
