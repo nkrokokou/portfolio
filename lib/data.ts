@@ -125,6 +125,13 @@ export const data = {
         tags: ["App Mobile", "Conformité", "ISO", "RGPD"],
         image: "/images/compliance-app.png",
       },
+      {
+        title: "CEFAPE Togo",
+        description: "Site web moderne pour le Centre de Formation Agricole et de Production Écologique. Modèle 3D interactif de plant de tomate et informations complètes sur l'agriculture durable.",
+        link: "https://cefape-togo.vercel.app/",
+        tags: ["Formation", "Agriculture", "3D", "Web"],
+        image: "/images/cefape.png",
+      },
     ]
   },
   en: {
@@ -252,6 +259,13 @@ export const data = {
         link: "https://lemonchiffon-magpie-493788.hostingersite.com/",
         tags: ["Mobile App", "Compliance", "ISO", "GDPR"],
         image: "/images/compliance-app.png",
+      },
+      {
+        title: "CEFAPE Togo",
+        description: "Modern website for the Centre de Formation Agricole et de Production Écologique. 3D interactive tomato plant model and comprehensive information about sustainable agriculture.",
+        link: "https://cefape-togo.vercel.app/",
+        tags: ["Education", "Agriculture", "3D", "Web"],
+        image: "/images/cefape.png",
       },
     ]
   }
