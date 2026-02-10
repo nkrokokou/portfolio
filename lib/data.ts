@@ -130,7 +130,7 @@ export const data = {
         description: "Site web moderne pour le Centre de Formation Agricole et de Production Écologique. Modèle 3D interactif de plant de tomate et informations complètes sur l'agriculture durable.",
         link: "https://cefape-togo.vercel.app/",
         tags: ["Formation", "Agriculture", "3D", "Web"],
-        image: "/images/cefape.png",
+        image: "/images/cefape.jpeg",
       },
     ]
   },
