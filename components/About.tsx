@@ -14,9 +14,9 @@ export function About() {
             title: "L'ADN Space Informatik",
             items: [
                 {
-                    title: "Vibe Coding",
-                    description: "Une méthodologie exclusive où l'intuition humaine guide la puissance brute de l'IA. Nous ne codons pas ligne par ligne, nous sculptons des fonctionnalités complètes en temps réel.",
-                    icon: <Sparkles className="w-8 h-8 text-violet-400" />,
+                    title: "Ingénierie de Précision",
+                    description: "Nous concevons des architectures logicielles rigoureuses : du code propre, testé, documenté et modulaire garantissant la pérennité et la performance de vos solutions.",
+                    icon: <Code2 className="w-8 h-8 text-violet-400" />,
                     color: "violet"
                 },
                 {
@@ -43,9 +43,9 @@ export function About() {
             title: "Space Informatik DNA",
             items: [
                 {
-                    title: "Vibe Coding",
-                    description: "An exclusive methodology where human intuition guides the raw power of AI. We don't code line by line, we sculpt complete features in real-time.",
-                    icon: <Sparkles className="w-8 h-8 text-violet-400" />,
+                    title: "Precision Engineering",
+                    description: "We design rigorous software architectures: clean, tested, documented, and modular code guaranteeing the durability and performance of your solutions.",
+                    icon: <Code2 className="w-8 h-8 text-violet-400" />,
                     color: "violet"
                 },
                 {
@@ -73,7 +73,7 @@ export function About() {
     const currentContent = content[language];
 
     return (
-        <section className="py-24 px-6 relative overflow-hidden bg-black/40">
+        <section id="about" className="py-24 px-6 relative overflow-hidden bg-black/40">
             {/* Dynamic Background Pattern */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>

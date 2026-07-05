@@ -12,7 +12,7 @@ export const data = {
       github: "github.com/nkrokokou",
     },
     skills: [
-      { name: "Vibe Coding (Cursor/AI)", category: "Innovation" },
+      { name: "Méthodologies Agile & CI/CD", category: "Innovation" },
       { name: "Python (Flask, Django)", category: "Backend" },
       { name: "Flutter & Dart", category: "Mobile" },
       { name: "PHP (Laravel)", category: "Backend" },
@@ -206,7 +206,7 @@ export const data = {
       github: "github.com/nkrokokou",
     },
     skills: [
-      { name: "Vibe Coding (Cursor/AI)", category: "Innovation" },
+      { name: "Agile & CI/CD Methodologies", category: "Innovation" },
       { name: "Python (Flask, Django)", category: "Backend" },
       { name: "Flutter & Dart", category: "Mobile" },
       { name: "PHP (Laravel)", category: "Backend" },

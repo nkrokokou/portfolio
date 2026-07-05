@@ -152,7 +152,7 @@ export function FloatingHero() {
                                 <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-500">
                                     <Code className="w-4 h-4" />
                                 </div>
-                                <div className="text-sm font-semibold text-foreground">Vibe Coding</div>
+                                <div className="text-sm font-semibold text-foreground">Clean Code</div>
                             </div>
                             <div className="space-y-2">
                                 <div className="h-2 w-full bg-muted/50 rounded-full" />

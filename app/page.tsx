@@ -3,18 +3,17 @@ import { Footer } from "@/components/Footer";
 import { FloatingHero } from "@/components/FloatingHero";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { Header } from "@/components/Header";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { ChatBot } from "@/components/ChatBot";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { About } from "@/components/About";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 // Placeholder testimonials - typically this would be in data.ts
 const testimonials = [
   { quote: "Space Informatik a transformé notre vision en réalité.", name: "Pierre D.", title: "CEO Startup Innov" },
-  { quote: "Une rapidité d'exécution incroyable grâce au Vibe Coding.", name: "Sarah L.", title: "CTO TechGroup" },
+  { quote: "Un professionnalisme exceptionnel et une rigueur technique irréprochable sur tous nos projets.", name: "Sarah L.", title: "CTO TechGroup" },
   { quote: "Expertise Big Data impressionnante.", name: "Jean-Marc K.", title: "Directeur Innovation" },
   { quote: "Le partenaire idéal pour la transformation digitale.", name: "Amina B.", title: "Fondatrice AgriTech" },
 ];
@@ -27,9 +26,7 @@ export default function Home() {
         <ShootingStars />
       </div>
       <div className="relative z-10 w-full">
-        <div className="absolute top-0 right-0 p-4">
-          <ThemeToggle />
-        </div>
+        <Header />
 
         <FloatingHero />
         <About />
@@ -43,7 +40,6 @@ export default function Home() {
         <div className="animate-in"><Footer /></div>
       </div>
       <ChatBot />
-      <LanguageSwitcher />
     </main>
   );
 }

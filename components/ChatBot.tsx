@@ -100,7 +100,7 @@ export function ChatBot() {
                     thanks: "Je vous en prie ! N'hésitez pas si vous avez d'autres questions.",
                     project_details: "C'est noté ! Nous avons une grande expertise en la matière. Le mieux serait d'en discuter de vive voix pour établir un cahier des charges. Voulez-vous nos coordonnées ?",
                     about_space: "Space Informatik est né d'une vision : propulser l'Afrique dans l'ère du numérique avec des solutions de classe mondiale. Nous ne faisons pas que coder, nous construisons des écosystèmes. Notre approche mêle rigueur scientifique et créativité artistique pour créer des produits qui ne sont pas seulement fonctionnels, mais inspirants.",
-                    methodology: "Notre méthode est unique : le 'Vibe Coding'. Nous fusionnons l'agilité humaine avec la puissance de l'IA (Big Data, LLMs) pour un développement ultra-rapide et sans bug. Nous travaillons en co-création totale avec vous : chaque ligne de code est pensée pour votre ROI et l'expérience de vos utilisateurs."
+                    methodology: "Notre méthodologie repose sur les meilleures pratiques de l'ingénierie logicielle : cycle de développement agile, tests automatisés continus, intégration et déploiement continus (CI/CD) et architecture propre."
                 },
                 en: {
                     default: "I didn't quite catch that. Could you clarify? I'm here to discuss your projects (Web, Mobile, AI) or to get in touch.",
@@ -112,7 +112,7 @@ export function ChatBot() {
                     thanks: "You're welcome! Feel free to ask if you have other questions.",
                     project_details: "Noted! We have strong expertise in this area. It would be best to discuss this vocally to establish requirements. Would you like our contact info?",
                     about_space: "Space Informatik was born from a vision: to propel Africa into the digital age with world-class solutions. We don't just code, we build ecosystems. Our approach blends scientific rigor with artistic creativity to create products that are not just functional, but inspiring.",
-                    methodology: "Our method is unique: 'Vibe Coding'. We fuse human agility with the power of AI (Big Data, LLMs) for ultra-fast, bug-free development. We work in total co-creation with you: every line of code is thought out for your ROI and your user experience."
+                    methodology: "Our methodology is based on software engineering best practices: agile development cycle, continuous automated testing, CI/CD, and clean architecture."
                 },
                 es: {
                     default: "No entendí bien. ¿Podría aclarar? Estoy aquí para hablar de sus proyectos o para contactar.",
@@ -124,7 +124,7 @@ export function ChatBot() {
                     thanks: "¡De nada! No dude si tiene otras preguntas.",
                     project_details: "¡Anotado! Tenemos gran experiencia en ello. Lo mejor sería discutirlo para establecer requisitos. ¿Quiere nuestros datos?",
                     about_space: "Space Informatik nació de una visión: impulsar a África hacia la era digital con soluciones de clase mundial. No solo codificamos, construimos ecosistemas. Nuestro enfoque combina rigor científico y creatividad artística.",
-                    methodology: "Nuestra metodología es única: 'Vibe Coding'. Fusionamos la agilidad humana con el poder de la IA para un desarrollo ultrarrápido. Trabajamos en co-creación total con usted."
+                    methodology: "Nuestra metodología se basa en las mejores prácticas de la ingeniería de software: ciclo de desarrollo ágil, pruebas automatizadas continuas, CI/CD y arquitectura limpia."
                 }
             };
 
@@ -296,7 +296,7 @@ export function ChatBot() {
                     >
                         <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-white dark:bg-zinc-800 border-r border-b border-border rotate-[-45deg] rounded-sm" />
                         <span className="text-sm font-medium flex items-center gap-2">
-                            Discutez avec notre IA ! 🤖
+                            Une question ? Discutez avec nous ! 💬
                         </span>
                     </motion.div>
                 )}
