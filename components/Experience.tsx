@@ -34,7 +34,9 @@ export function Experience() {
                             <Briefcase className="text-primary w-6 h-6" />
                             <h3 className="text-2xl font-semibold">{t('experience.subtitle')}</h3>
                         </motion.div>
-                        <div className="border-l-2 border-border ml-3 space-y-8 pl-8 pb-4">
+                        <div className="relative border-l border-border ml-3 space-y-8 pl-8 pb-4">
+                            {/* Glowing animated line overlay */}
+                            <div className="absolute left-[-1px] top-0 bottom-4 w-[1px] bg-gradient-to-b from-blue-500 via-purple-500 to-emerald-500 animate-pulse z-0" />
                             {experience.map((job, i) => (
                                 <motion.div
                                     key={i}
@@ -42,9 +44,9 @@ export function Experience() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.5, delay: i * 0.1 }}
                                     viewport={{ once: true }}
-                                    className="relative"
+                                    className="relative z-10"
                                 >
-                                    <div className="absolute -left-[41px] top-0 w-5 h-5 rounded-full border-4 border-background bg-primary" />
+                                    <div className="absolute -left-[38px] top-1.5 w-3 h-3 rounded-full border-2 border-background bg-gradient-to-tr from-blue-500 to-purple-600 shadow-[0_0_10px_rgba(59,130,246,0.8)] z-10" />
                                     <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
                                         <h4 className="text-xl font-bold">{job.title}</h4>
                                         <span className="text-sm text-muted-foreground bg-secondary/50 px-2 py-1 rounded">{job.period}</span>

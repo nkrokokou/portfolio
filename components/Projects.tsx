@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 const ICON_MAP = {
     Smartphone,
@@ -122,72 +123,78 @@ export function Projects() {
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.3 }}
-                                    className="group flex flex-col bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 transition-all hover:shadow-lg"
+                                    className="flex w-full"
                                 >
-                                    <div className="aspect-video w-full bg-muted relative overflow-hidden flex items-center justify-center">
-                                        {IconComponent ? (
-                                            <div className="w-full h-full flex items-center justify-center bg-primary/5 group-hover:bg-primary/10 transition-colors">
-                                                <IconComponent className="w-16 h-16 text-primary/40 group-hover:text-primary transition-all duration-500 group-hover:scale-110" />
-                                            </div>
-                                        ) : (
-                                            <img
-                                                src={project.image}
-                                                alt={project.title}
-                                                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                                            />
-                                        )}
-                                        
-                                        {project.isCompleted && (
-                                            <div className="absolute top-3 right-3 flex items-center gap-1 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 backdrop-blur px-2.5 py-1 rounded-full text-xs font-semibold">
-                                                <CheckCircle className="w-3.5 h-3.5" />
-                                                <span>{t('projects.completed_badge')}</span>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className="p-6 flex flex-col flex-grow">
-                                        <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-grow">
-                                            {project.description}
-                                        </p>
-                                        <div className="flex flex-wrap gap-2 mb-6">
-                                            {project.tags.map(tag => (
-                                                <span key={tag} className="text-xs px-2 py-1 bg-secondary rounded-full text-secondary-foreground">
-                                                    {tag}
-                                                </span>
-                                            ))}
+                                    <CardSpotlight
+                                        radius={250}
+                                        color="rgba(59, 130, 246, 0.12)"
+                                        className="group flex flex-col w-full bg-card/45 backdrop-blur-sm border border-border/40 rounded-2xl overflow-hidden hover:border-primary/45 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300"
+                                    >
+                                        <div className="aspect-video w-full bg-muted relative overflow-hidden flex items-center justify-center">
+                                            {IconComponent ? (
+                                                <div className="w-full h-full flex items-center justify-center bg-primary/5 group-hover:bg-primary/10 transition-colors">
+                                                    <IconComponent className="w-16 h-16 text-primary/40 group-hover:text-primary transition-all duration-500 group-hover:scale-110" />
+                                                </div>
+                                            ) : (
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.title}
+                                                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                                                />
+                                            )}
+                                            
+                                            {project.isCompleted && (
+                                                <div className="absolute top-3 right-3 flex items-center gap-1 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 backdrop-blur px-2.5 py-1 rounded-full text-xs font-semibold">
+                                                    <CheckCircle className="w-3.5 h-3.5" />
+                                                    <span>{t('projects.completed_badge')}</span>
+                                                </div>
+                                            )}
                                         </div>
 
-                                        {/* Links Section */}
-                                        {!project.isCompleted && (project.github || project.link) && (
-                                            <div className="flex items-center gap-3 mt-auto pt-4 border-t border-border/30">
-                                                {project.github && (
-                                                    <a
-                                                        href={project.github}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors border border-border/80 hover:border-foreground/40 px-3 py-1.5 rounded-lg bg-background/30"
-                                                    >
-                                                        <Github className="w-3.5 h-3.5" />
-                                                        <span>{t('projects.github')}</span>
-                                                    </a>
-                                                )}
-                                                {project.link && (
-                                                    <a
-                                                        href={project.link}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors border border-primary/20 hover:border-primary/40 px-3 py-1.5 rounded-lg bg-primary/5"
-                                                    >
-                                                        <ExternalLink className="w-3.5 h-3.5" />
-                                                        <span>{t('projects.demo')}</span>
-                                                    </a>
-                                                )}
+                                        <div className="p-6 flex flex-col flex-grow">
+                                            <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                                                {project.title}
+                                            </h3>
+                                            <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-grow">
+                                                {project.description}
+                                            </p>
+                                            <div className="flex flex-wrap gap-2 mb-6">
+                                                {project.tags.map(tag => (
+                                                    <span key={tag} className="text-xs px-2 py-1 bg-secondary rounded-full text-secondary-foreground">
+                                                        {tag}
+                                                    </span>
+                                                ))}
                                             </div>
-                                        )}
-                                    </div>
+
+                                            {/* Links Section */}
+                                            {!project.isCompleted && (project.github || project.link) && (
+                                                <div className="flex items-center gap-3 mt-auto pt-4 border-t border-border/30">
+                                                    {project.github && (
+                                                        <a
+                                                            href={project.github}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors border border-border/80 hover:border-foreground/40 px-3 py-1.5 rounded-lg bg-background/30"
+                                                        >
+                                                            <Github className="w-3.5 h-3.5" />
+                                                            <span>{t('projects.github')}</span>
+                                                        </a>
+                                                    )}
+                                                    {project.link && (
+                                                        <a
+                                                            href={project.link}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors border border-primary/20 hover:border-primary/40 px-3 py-1.5 rounded-lg bg-primary/5"
+                                                        >
+                                                            <ExternalLink className="w-3.5 h-3.5" />
+                                                            <span>{t('projects.demo')}</span>
+                                                        </a>
+                                                    )}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </CardSpotlight>
                                 </motion.div>
                             );
                         })}

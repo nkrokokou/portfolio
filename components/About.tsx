@@ -3,6 +3,7 @@
 import { useLanguage } from "@/lib/language-context";
 import { cn } from "@/lib/utils";
 import { Brain, Code2, Rocket, Users, Sparkles, Zap, Network, Box } from "lucide-react";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 
@@ -108,27 +109,32 @@ const Card = ({ item, index }: { item: any, index: number }) => {
     let hoverColorClass = "";
     let shadowColorClass = "";
     let dotColorClass = "";
+    let glowColor = "rgba(139, 92, 246, 0.15)";
 
     switch (item.color) {
         case "violet":
             hoverColorClass = "text-violet-400 group-hover:bg-violet-500/10";
             shadowColorClass = "group-hover:shadow-violet-500/20";
             dotColorClass = "bg-violet-400";
+            glowColor = "rgba(139, 92, 246, 0.15)";
             break;
         case "amber":
             hoverColorClass = "text-amber-400 group-hover:bg-amber-500/10";
             shadowColorClass = "group-hover:shadow-amber-500/20";
             dotColorClass = "bg-amber-400";
+            glowColor = "rgba(245, 158, 11, 0.15)";
             break;
         case "blue":
             hoverColorClass = "text-blue-400 group-hover:bg-blue-500/10";
             shadowColorClass = "group-hover:shadow-blue-500/20";
             dotColorClass = "bg-blue-400";
+            glowColor = "rgba(59, 130, 246, 0.15)";
             break;
         case "emerald":
             hoverColorClass = "text-emerald-400 group-hover:bg-emerald-500/10";
             shadowColorClass = "group-hover:shadow-emerald-500/20";
             dotColorClass = "bg-emerald-400";
+            glowColor = "rgba(16, 185, 129, 0.15)";
             break;
     }
 
@@ -138,28 +144,34 @@ const Card = ({ item, index }: { item: any, index: number }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className={`group relative h-full bg-neutral-900/40 border border-white/5 p-6 rounded-2xl overflow-hidden hover:border-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${shadowColorClass}`}
+            className="h-full"
         >
-            {/* Spotlight Gradient Background Effect */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+            <CardSpotlight
+                radius={200}
+                color={glowColor}
+                className={cn(
+                    "group relative h-full bg-card/45 backdrop-blur-sm border border-border/45 p-6 rounded-2xl overflow-hidden hover:border-primary/45 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl",
+                    shadowColorClass
+                )}
+            >
+                <div className={`mb-6 p-4 rounded-xl bg-secondary/50 w-fit ${hoverColorClass} transition-colors duration-300 border border-border/40`}>
+                    {item.icon}
+                </div>
 
-            <div className={`mb-6 p-4 rounded-xl bg-white/5 w-fit ${hoverColorClass} transition-colors duration-300 border border-white/5`}>
-                {item.icon}
-            </div>
+                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                    {item.title}
+                </h3>
 
-            <h3 className="text-xl font-bold text-neutral-100 mb-3 group-hover:translate-x-1 transition-transform duration-300">
-                {item.title}
-            </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                    {item.description}
+                </p>
 
-            <p className="text-neutral-400 text-sm leading-relaxed mb-6">
-                {item.description}
-            </p>
+                {/* Decorative bottom line */}
+                <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-border/60 to-transparent mt-auto" />
 
-            {/* Decorative bottom line */}
-            <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mt-auto" />
-
-            {/* Hover visual cue - glowing dot */}
-            <div className={`absolute bottom-6 right-6 w-1.5 h-1.5 rounded-full ${dotColorClass} opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_0_10px_currentColor]`} />
+                {/* Hover visual cue - glowing dot */}
+                <div className={`absolute bottom-6 right-6 w-1.5 h-1.5 rounded-full ${dotColorClass} opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_0_10px_currentColor]`} />
+            </CardSpotlight>
         </motion.div>
     );
 };
