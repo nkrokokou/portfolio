@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import { AuroraBackground } from "./ui/aurora-background";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { Typewriter } from "./ui/typewriter";
+import { Magnetic } from "./ui/magnetic";
 
 export function FloatingHero() {
     const { language, t } = useLanguage();
@@ -94,20 +95,24 @@ export function FloatingHero() {
                         >
                             {/* Shimmer Button CTA */}
                             <a href="#contact">
-                                <Button 
-                                    size="lg" 
-                                    className="relative overflow-hidden rounded-full px-8 text-base bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25 hover:shadow-indigo-500/35 transition-all duration-300 hover:scale-[1.03]"
-                                >
-                                    <span className="absolute inset-0 w-full h-full bg-[linear-gradient(90deg,transparent_20%,rgba(255,255,255,0.25)_50%,transparent_80%)] bg-[length:200%_100%] animate-shimmer pointer-events-none" />
-                                    <span className="relative z-10 flex items-center gap-2">
-                                        {t('nav.contact')} <Rocket className="w-4 h-4" />
-                                    </span>
-                                </Button>
+                                <Magnetic>
+                                    <Button 
+                                        size="lg" 
+                                        className="relative overflow-hidden rounded-full px-8 text-base bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25 hover:shadow-indigo-500/35 transition-all duration-300 hover:scale-[1.03]"
+                                    >
+                                        <span className="absolute inset-0 w-full h-full bg-[linear-gradient(90deg,transparent_20%,rgba(255,255,255,0.25)_50%,transparent_80%)] bg-[length:200%_100%] animate-shimmer pointer-events-none" />
+                                        <span className="relative z-10 flex items-center gap-2">
+                                            {t('nav.contact')} <Rocket className="w-4 h-4" />
+                                        </span>
+                                    </Button>
+                                </Magnetic>
                             </a>
                             <a href="#projects">
-                                <Button variant="outline" size="lg" className="rounded-full px-8 text-base transition-all duration-300 hover:bg-secondary/60 hover:border-purple-500/40 hover:-translate-y-0.5">
-                                    Voir les projets <ArrowRight className="ml-2 w-4 h-4" />
-                                </Button>
+                                <Magnetic>
+                                    <Button variant="outline" size="lg" className="rounded-full px-8 text-base transition-all duration-300 hover:bg-secondary/60 hover:border-purple-500/40 hover:-translate-y-0.5">
+                                        Voir les projets <ArrowRight className="ml-2 w-4 h-4" />
+                                    </Button>
+                                </Magnetic>
                             </a>
                         </motion.div>
                     </motion.div>

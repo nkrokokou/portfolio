@@ -44,6 +44,8 @@ const DynamicChatBot = dynamic(() => import("@/components/ChatBot").then((m) => 
 
 const DynamicInfiniteMovingCards = dynamic(() => import("@/components/ui/infinite-moving-cards").then((m) => m.InfiniteMovingCards));
 
+const DynamicCustomCursor = dynamic(() => import("@/components/ui/custom-cursor").then((m) => m.CustomCursor));
+
 const testimonials = [
   { quote: "Space Informatik a transformé notre vision en réalité.", name: "Pierre D.", title: "CEO Startup Innov" },
   { quote: "Un professionnalisme exceptionnel et une rigueur technique irréprochable sur tous nos projets.", name: "Sarah L.", title: "CTO TechGroup" },
@@ -82,6 +84,7 @@ export default function Home() {
       </div>
       
       <DynamicChatBot />
+      <DynamicCustomCursor />
     </main>
   );
 }
