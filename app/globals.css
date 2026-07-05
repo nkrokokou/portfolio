@@ -130,3 +130,26 @@ html {
     transition-delay: 0s !important;
   }
 }
+
+@keyframes shooting-star-custom {
+  0% {
+    transform: translate(0, 0) rotate(-45deg) scale(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+    transform: translate(-150px, 150px) rotate(-45deg) scale(1);
+  }
+  10% {
+    transform: translate(-300px, 300px) rotate(-45deg) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-300px, 300px) rotate(-45deg) scale(0);
+    opacity: 0;
+  }
+}
+
+.animate-shooting-star-custom {
+  animation: shooting-star-custom 12s ease-in-out infinite;
+}

@@ -64,15 +64,42 @@ export function FloatingHero() {
                         </motion.div>
 
                         <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
                             className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]"
+                            variants={{
+                                hidden: { opacity: 0 },
+                                visible: {
+                                    opacity: 1,
+                                    transition: {
+                                        staggerChildren: 0.04,
+                                        delayChildren: 0.1
+                                    }
+                                }
+                            }}
+                            initial="hidden"
+                            animate="visible"
                         >
-                            {personalInfo.name} <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400">
+                            {personalInfo.name.split("").map((char, idx) => (
+                                <motion.span
+                                    key={idx}
+                                    variants={{
+                                        hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
+                                        visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { type: "spring" as const, stiffness: 150, damping: 15 } }
+                                    }}
+                                    className="inline-block"
+                                >
+                                    {char === " " ? "\u00A0" : char}
+                                </motion.span>
+                            ))}
+                            <br />
+                            <motion.span 
+                                variants={{
+                                    hidden: { opacity: 0, y: 20 },
+                                    visible: { opacity: 1, y: 0, transition: { delay: 0.6, duration: 0.6 } }
+                                }}
+                                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 inline-block mt-1"
+                            >
                                 Future Vision
-                            </span>
+                            </motion.span>
                         </motion.h1>
 
                         {/* Cycling Typewriter Roles subtitle */}

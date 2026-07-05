@@ -4,8 +4,8 @@ import { useLanguage } from "@/lib/language-context";
 import { cn } from "@/lib/utils";
 import { Brain, Code2, Rocket, Users, Sparkles, Zap, Network, Box } from "lucide-react";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
-import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { motion, useInView, animate } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
 
 export function About() {
     const { language } = useLanguage();
@@ -89,6 +89,36 @@ export function About() {
         show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6 } }
     };
 
+    const Counter = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
+        const nodeRef = useRef<HTMLSpanElement>(null);
+        const inView = useInView(nodeRef, { once: true, margin: "-80px" });
+
+        useEffect(() => {
+            if (!inView) return;
+            const node = nodeRef.current;
+            if (!node) return;
+
+            const controls = animate(0, value, {
+                duration: 1.5,
+                ease: "easeOut",
+                onUpdate(val) {
+                    node.textContent = Math.round(val).toString() + suffix;
+                },
+            });
+
+            return () => controls.stop();
+        }, [inView, value, suffix]);
+
+        return <span ref={nodeRef}>0{suffix}</span>;
+    };
+
+    const stats = [
+        { value: 3, suffix: "+", label: language === 'fr' ? "Ans d'Expérience" : "Years of Experience" },
+        { value: 15, suffix: "+", label: language === 'fr' ? "Projets Réalisés" : "Completed Projects" },
+        { value: 40, suffix: "+", label: language === 'fr' ? "Techs Maîtrisées" : "Mastered Techs" },
+        { value: 1000, suffix: "+", label: language === 'fr' ? "Commits GitHub" : "GitHub Commits" },
+    ];
+
     return (
         <section id="about" className="py-24 px-6 relative overflow-hidden bg-black/40">
             {/* Dynamic Background Pattern */}
@@ -113,6 +143,18 @@ export function About() {
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
                 </motion.div>
+
+                {/* Stats Counter Band */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 max-w-5xl mx-auto">
+                    {stats.map((stat, idx) => (
+                        <div key={idx} className="bg-secondary/10 border border-border/30 rounded-2xl p-6 text-center backdrop-blur-sm relative overflow-hidden group hover:border-blue-500/40 transition-all duration-300">
+                            <div className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-2">
+                                <Counter value={stat.value} suffix={stat.suffix} />
+                            </div>
+                            <div className="text-[10px] md:text-xs font-semibold text-muted-foreground uppercase tracking-widest">{stat.label}</div>
+                        </div>
+                    ))}
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {currentContent.items.map((item, i) => (
