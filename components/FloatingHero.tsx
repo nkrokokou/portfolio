@@ -15,7 +15,8 @@ export function FloatingHero() {
     const { scrollY } = useScroll();
 
     // Parallax effects
-    const y2 = useTransform(scrollY, [0, 500], [0, -100]);
+    const y2 = useTransform(scrollY, [0, 500], [0, -80]);
+    const yLeft = useTransform(scrollY, [0, 500], [0, -30]);
 
     // 3D Tilt Hook Logic
     const tiltRef = useRef<HTMLDivElement>(null);
@@ -50,7 +51,7 @@ export function FloatingHero() {
                 <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10 w-full">
 
                     {/* Left Content */}
-                    <div className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
+                    <motion.div style={{ y: yLeft }} className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -109,7 +110,7 @@ export function FloatingHero() {
                                 </Button>
                             </a>
                         </motion.div>
-                    </div>
+                    </motion.div>
 
                     {/* Right Content - 3D Tilt Mockup */}
                     <div className="relative h-[450px] md:h-[600px] w-full flex items-center justify-center perspective-1000">

@@ -73,6 +73,22 @@ export function About() {
 
     const currentContent = content[language];
 
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.08,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const titleReveal = {
+        hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
+        show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6 } }
+    };
+
     return (
         <section id="about" className="py-24 px-6 relative overflow-hidden bg-black/40">
             {/* Dynamic Background Pattern */}
@@ -81,12 +97,15 @@ export function About() {
                 <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 opacity-20 blur-[100px]"></div>
             </div>
 
-            <div className="max-w-7xl mx-auto relative z-10">
+            <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-80px" }}
+                className="max-w-7xl mx-auto relative z-10"
+            >
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
+                    variants={titleReveal}
                     className="text-center mb-16"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-200 to-neutral-400 pb-2">
@@ -100,7 +119,7 @@ export function About() {
                         <Card key={i} item={item} index={i} />
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }
@@ -138,12 +157,20 @@ const Card = ({ item, index }: { item: any, index: number }) => {
             break;
     }
 
+    const itemReveal = {
+        hidden: { opacity: 0, y: 35, scale: 0.95, filter: "blur(4px)" },
+        show: { 
+            opacity: 1, 
+            y: 0, 
+            scale: 1, 
+            filter: "blur(0px)",
+            transition: { type: "spring" as const, stiffness: 100, damping: 15 } 
+        }
+    };
+
     return (
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
+            variants={itemReveal}
             className="h-full"
         >
             <CardSpotlight

@@ -4,7 +4,7 @@ import { FloatingHero } from "@/components/FloatingHero";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ShootingStars } from "@/components/ui/shooting-stars";
-import { StarsBackground } from "@/components/ui/stars-background";
+import { ParallaxStars } from "@/components/ui/parallax-stars";
 
 // Reusable lightweight loading skeleton
 const SectionSkeleton = () => (
@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-foreground antialiased selection:bg-blue-500/30 relative overflow-hidden transition-colors duration-300">
       <div className="fixed inset-0 z-0 pointer-events-none hidden dark:block">
-        <StarsBackground />
+        <ParallaxStars />
         <ShootingStars />
       </div>
       <div className="relative z-10 w-full">
