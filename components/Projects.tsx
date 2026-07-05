@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { data } from "@/lib/data";
 import { useLanguage } from "@/lib/language-context";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { LiveScreenshot } from "./LiveScreenshot";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     ExternalLink,
@@ -46,10 +47,17 @@ export function Projects() {
         : projects.filter(p => getProjectCategory(p.tags) === selectedCategory);
 
     // Grid sizes mapping for Bento layout structure
-    const getBentoClasses = (index: number) => {
-        if (index === 0) return "md:col-span-2 md:row-span-2 h-full min-h-[460px]"; // Large item
-        if (index === 1) return "md:col-span-1 md:row-span-2 h-full min-h-[460px]"; // Medium height
-        if (index === 5 || index === 8) return "md:col-span-2 md:row-span-1 h-full min-h-[220px]"; // Horizontal double
+    const getBentoClasses = (projectTitle: string) => {
+        const titleLower = projectTitle.toLowerCase();
+        if (titleLower.includes("saadé management") || titleLower.includes("saade management")) {
+            return "md:col-span-2 md:row-span-2 h-full min-h-[460px]"; // Large item
+        }
+        if (titleLower.includes("phone shop manager")) {
+            return "md:col-span-1 md:row-span-2 h-full min-h-[460px]"; // Medium height
+        }
+        if (titleLower.includes("amap togo") || titleLower.includes("ziris")) {
+            return "md:col-span-2 md:row-span-1 h-full min-h-[240px]"; // Horizontal double
+        }
         return "md:col-span-1 md:row-span-1 h-full min-h-[220px]"; // Standard single
     };
 
@@ -111,10 +119,16 @@ export function Projects() {
                     className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto"
                 >
                     <AnimatePresence mode="popLayout">
-                        {filteredProjects.map((project, index) => {
-                            const bentoClass = getBentoClasses(index);
+                        {filteredProjects.map((project) => {
+                            const bentoClass = getBentoClasses(project.title);
                             const isLarge = bentoClass.includes("col-span-2") || bentoClass.includes("row-span-2");
                             
+                            const titleLower = project.title.toLowerCase();
+                            const isSaadeManagement = titleLower.includes("saadé management") || titleLower.includes("saade management");
+                            const isZiris = titleLower.includes("ziris");
+                            const isSaadeGoodVibes = titleLower.includes("saadé good vibes") || titleLower.includes("saade good vibes");
+                            const isAmapTogo = titleLower.includes("amap togo");
+
                             return (
                                 <motion.div
                                     layout
@@ -136,8 +150,8 @@ export function Projects() {
                                         color="rgba(59, 130, 246, 0.1)"
                                         className="group flex flex-col w-full h-full bg-secondary/5 border border-border/40 rounded-2xl overflow-hidden hover:border-primary/45 hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500 hover:-translate-y-1 justify-between"
                                     >
-                                        {/* Physical Laptop/Mobile Screen Mockup inside Bento Cell */}
-                                        <div className="w-full flex-grow flex items-center justify-center p-6 bg-muted/10 relative overflow-hidden min-h-[160px]">
+                                        {/* Laptop/Mobile Screen Mockup containing LiveScreenshot */}
+                                        <div className="w-full flex-grow flex items-center justify-center p-6 bg-muted/10 relative overflow-hidden min-h-[180px]">
                                             {isLarge ? (
                                                 /* Laptop Mockup */
                                                 <div className="w-full max-w-[420px] select-none pointer-events-none mt-2 relative z-10 transition-transform duration-500 group-hover:scale-[1.03] preserve-3d">
@@ -150,42 +164,35 @@ export function Projects() {
                                                                 {project.title.toLowerCase().replace(/\s+/g, '')}.space.io
                                                             </div>
                                                         </div>
-                                                        <div className="flex-grow bg-zinc-900 dark:bg-black/90 p-4 flex flex-col gap-2 justify-center">
-                                                            {index === 0 ? (
-                                                                // SAADÉ POS Screen Simulation
-                                                                <div className="space-y-2">
+                                                        <div className="flex-grow relative h-full w-full bg-zinc-900 dark:bg-black/90">
+                                                            {project.link ? (
+                                                                <LiveScreenshot url={project.link} type="desktop" alt={project.title} />
+                                                            ) : isZiris ? (
+                                                                // Ziris LSTM Graph Simulation Fallback
+                                                                <div className="p-4 flex flex-col gap-2 justify-center h-full">
                                                                     <div className="flex justify-between items-center border-b border-border/20 pb-1">
-                                                                        <span className="text-[10px] text-white font-bold">Saadé Dashboard</span>
-                                                                        <Activity className="w-3.5 h-3.5 text-blue-500 animate-pulse" />
-                                                                    </div>
-                                                                    <div className="grid grid-cols-3 gap-1">
-                                                                        <div className="bg-secondary/40 p-1.5 rounded flex flex-col">
-                                                                            <span className="text-[6px] text-muted-foreground">Ventes</span>
-                                                                            <span className="text-[9px] text-emerald-400 font-bold font-mono">+12.4%</span>
-                                                                        </div>
-                                                                        <div className="bg-secondary/40 p-1.5 rounded flex flex-col">
-                                                                            <span className="text-[6px] text-muted-foreground">Pertes</span>
-                                                                            <span className="text-[9px] text-red-400 font-bold font-mono">-5.2%</span>
-                                                                        </div>
-                                                                        <div className="bg-secondary/40 p-1.5 rounded flex flex-col">
-                                                                            <span className="text-[6px] text-muted-foreground">RH</span>
-                                                                            <span className="text-[9px] text-blue-400 font-bold font-mono">100%</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            ) : (
-                                                                // General Workspace simulation
-                                                                <div className="space-y-2">
-                                                                    <div className="flex justify-between items-center border-b border-border/20 pb-1">
-                                                                        <span className="text-[10px] text-white font-bold">{project.title} Interface</span>
-                                                                        <LineChart className="w-3.5 h-3.5 text-purple-500" />
+                                                                        <span className="text-[10px] text-white font-bold">Ziris LSTM Engine</span>
+                                                                        <LineChart className="w-3.5 h-3.5 text-purple-500 animate-pulse" />
                                                                     </div>
                                                                     <div className="flex items-end gap-1.5 h-16 pt-2 justify-center">
                                                                         <div className="w-2.5 h-[30%] bg-blue-500/50 rounded-sm" />
                                                                         <div className="w-2.5 h-[50%] bg-blue-500/50 rounded-sm" />
-                                                                        <div className="w-2.5 h-[70%] bg-purple-500/60 rounded-sm" />
+                                                                        <div className="w-2.5 h-[90%] bg-red-500/80 rounded-sm animate-pulse" />
                                                                         <div className="w-2.5 h-[45%] bg-blue-500/50 rounded-sm" />
                                                                         <div className="w-2.5 h-[65%] bg-blue-500/50 rounded-sm" />
+                                                                    </div>
+                                                                </div>
+                                                            ) : (
+                                                                // Generic Dashboard Fallback
+                                                                <div className="p-4 flex flex-col gap-2 justify-center h-full">
+                                                                    <div className="flex justify-between items-center border-b border-border/20 pb-1">
+                                                                        <span className="text-[10px] text-white font-bold">{project.title}</span>
+                                                                        <Code className="w-3.5 h-3.5 text-indigo-500" />
+                                                                    </div>
+                                                                    <div className="space-y-1.5 pt-2">
+                                                                        <div className="h-2 w-full bg-secondary/50 rounded" />
+                                                                        <div className="h-2 w-[80%] bg-secondary/50 rounded" />
+                                                                        <div className="h-2 w-[60%] bg-secondary/50 rounded" />
                                                                     </div>
                                                                 </div>
                                                             )}
@@ -199,24 +206,26 @@ export function Projects() {
                                                     <div className="absolute top-0.5 left-1/2 -translate-x-1/2 w-10 h-2 bg-zinc-800 rounded-full z-20 flex items-center justify-center">
                                                         <div className="w-1 h-1 rounded-full bg-zinc-900" />
                                                     </div>
-                                                    <div className="w-full h-full bg-zinc-900 dark:bg-zinc-950 flex flex-col p-2 pt-4 justify-between text-[7px] text-left select-none pointer-events-none z-10">
-                                                        <div className="border-b border-border/20 pb-0.5 mb-1 text-[8px] font-bold text-white flex justify-between">
-                                                            <span>Mobile POS</span>
-                                                            <Smartphone className="w-2 h-2 text-purple-400" />
-                                                        </div>
-                                                        <div className="flex-grow flex flex-col gap-1.5 justify-center">
-                                                            <div className="bg-secondary/40 p-1 rounded flex justify-between items-center">
-                                                                <span>Client ID</span>
-                                                                <span className="font-bold text-blue-400">#495</span>
+                                                    <div className="w-full h-full relative bg-zinc-900">
+                                                        {project.link ? (
+                                                            <LiveScreenshot url={project.link} type="mobile" alt={project.title} />
+                                                        ) : (
+                                                            <div className="w-full h-full bg-zinc-900 dark:bg-zinc-950 flex flex-col p-2 pt-4 justify-between text-[7px] text-left select-none pointer-events-none">
+                                                                <div className="border-b border-border/20 pb-0.5 mb-1 text-[8px] font-bold text-white flex justify-between">
+                                                                    <span>Mobile Mockup</span>
+                                                                    <Smartphone className="w-2 h-2 text-purple-400" />
+                                                                </div>
+                                                                <div className="flex-grow flex flex-col gap-1.5 justify-center">
+                                                                    <div className="bg-secondary/40 p-1 rounded flex justify-between items-center">
+                                                                        <span>Project</span>
+                                                                        <span className="font-bold text-blue-400">Offline</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="w-full h-4 bg-blue-600 rounded flex items-center justify-center text-[7px] text-white font-bold">
+                                                                    Menu
+                                                                </div>
                                                             </div>
-                                                            <div className="bg-secondary/40 p-1 rounded flex justify-between items-center">
-                                                                <span>Montant</span>
-                                                                <span className="font-bold text-emerald-400">$184.20</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="w-full h-4 bg-blue-600 rounded flex items-center justify-center text-[7px] text-white font-bold">
-                                                            Valider Pay
-                                                        </div>
+                                                        )}
                                                     </div>
                                                 </div>
                                             )}
