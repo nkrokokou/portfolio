@@ -7,6 +7,7 @@ import { ArrowRight, Code, Database, Globe, Rocket, Sparkles } from "lucide-reac
 import { Button } from "./ui/button";
 import { AuroraBackground } from "./ui/aurora-background";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
+import { Typewriter } from "./ui/typewriter";
 
 export function FloatingHero() {
     const { language, t } = useLanguage();
@@ -72,6 +73,13 @@ export function FloatingHero() {
                             </span>
                         </motion.h1>
 
+                        {/* Cycling Typewriter Roles subtitle */}
+                        <div className="h-8 text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400 tracking-wide mt-2">
+                            <Typewriter 
+                                words={["Fullstack Developer", "AI & Big Data Specialist", "Founder @ Space Informatik"]}
+                            />
+                        </div>
+
                         {/* Staggered Bio Text Reveal */}
                         <div className="text-lg md:text-xl text-muted-foreground max-w-2xl font-normal leading-relaxed">
                             <TextGenerateEffect words={personalInfo.bio} duration={0.4} />
@@ -83,13 +91,20 @@ export function FloatingHero() {
                             transition={{ duration: 0.6, delay: 0.3 }}
                             className="flex flex-wrap gap-4 justify-center lg:justify-start mt-4"
                         >
-                            <a href={`mailto:${personalInfo.email}`}>
-                                <Button size="lg" className="rounded-full px-8 text-base shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-shadow">
-                                    {t('nav.contact')} <Rocket className="ml-2 w-4 h-4" />
+                            {/* Shimmer Button CTA */}
+                            <a href="#contact">
+                                <Button 
+                                    size="lg" 
+                                    className="relative overflow-hidden rounded-full px-8 text-base bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25 hover:shadow-indigo-500/35 transition-all duration-300 hover:scale-[1.03]"
+                                >
+                                    <span className="absolute inset-0 w-full h-full bg-[linear-gradient(90deg,transparent_20%,rgba(255,255,255,0.25)_50%,transparent_80%)] bg-[length:200%_100%] animate-shimmer pointer-events-none" />
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        {t('nav.contact')} <Rocket className="w-4 h-4" />
+                                    </span>
                                 </Button>
                             </a>
                             <a href="#projects">
-                                <Button variant="outline" size="lg" className="rounded-full px-8 text-base">
+                                <Button variant="outline" size="lg" className="rounded-full px-8 text-base transition-all duration-300 hover:bg-secondary/60 hover:border-purple-500/40 hover:-translate-y-0.5">
                                     Voir les projets <ArrowRight className="ml-2 w-4 h-4" />
                                 </Button>
                             </a>
